@@ -1,17 +1,99 @@
 ## PyMotivator
 
-### Introduction
-This is a Python program that intends to send motivational quotes on WhatsApp on a daily basis. These quotes are motivational by default but can be changed to funny, sports related, etc if required.
+Sure, here's a README file for your GitHub repository:
 
-### Purpose
-This project has a purpose to learn Python from basics to advanced and at the same time add value by sending/receiving motivational quotes everyday.
+---
 
-### Intended Audience
-Anyone who wants to learn Python and its integration with WhatsApp or anyone who wants daily Motivational quotes on WhatsApp.
+# Motivational Quotes WhatsApp Bot
 
-### Overall Description
-This project will have two main modules, one would fetch a quote from a Quote of the Day API
-and send a WhatsApp text using a Third Party Service. The other module will be a cron scheduler that will schedule these WhatsApp texts for everyday.
+This project sends daily inspirational quotes to a specified WhatsApp number using the Twilio API and the Quotes API. The quote is sent at a specified time each day using a cron job.
+
+## Table of Contents
+
+- [Motivational Quotes WhatsApp Bot](#motivational-quotes-whatsapp-bot)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Setup](#setup)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Usage](#usage)
+  - [Files](#files)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Acknowledgements](#acknowledgements)
+
+## Features
+
+- Fetches daily inspirational quotes from the Quotes API.
+- Sends the quote via WhatsApp using Twilio API.
+- Uses a cron job to schedule daily messages.
+
+## Setup
+
+### Prerequisites
+
+- Python 3.x
+- A Twilio account with WhatsApp Sandbox configured
+- Quotes API key
+- `.env` file with the following variables:
+  ```
+  TWILIO_ACCOUNT_SID=your_account_sid_here
+  TWILIO_AUTH_TOKEN=your_auth_token_here
+  ```
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/motivational-quotes-whatsapp-bot.git
+    cd motivational-quotes-whatsapp-bot
+    ```
+
+2. Install the required packages:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Create a `.env` file in the root directory and add your Twilio credentials:
+    ```env
+    TWILIO_ACCOUNT_SID=your_account_sid_here
+    TWILIO_AUTH_TOKEN=your_auth_token_here
+    ```
+
+## Usage
+
+1. Update the phone numbers in `twilio_connection.py`:
+    - `from_='whatsapp:+14155238886'`: Replace with your Twilio WhatsApp number.
+    - `to='whatsapp:+91123456780'`: Replace with the recipient's WhatsApp number.
+
+2. Run the script:
+    ```bash
+    python cron.py
+    ```
+
+This will start the scheduler, and the quote will be sent daily at the specified time.
+
+## Files
+
+- `motivator.py`: Contains functions to fetch the quote and send it via WhatsApp.
+- `twilio_connection.py`: Handles Twilio API connections and message sending.
+- `cron.py`: Schedules the daily sending of the quote.
+- `requirements.txt`: Lists the dependencies needed for the project.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [Twilio](https://www.twilio.com) for the messaging API.
+- [Quotes API](https://quotes.rest/) for the daily inspirational quotes.
+
+---
 
 ### System Features and Requirements
 	Functional Requirements
@@ -46,10 +128,3 @@ Security - All the keys and passwords to be stored as Environment variables
 Quality - Code quality and PEP8 Standards
 Performance - Deployment on Heroku for scaling, newer Python version with updated Libraries
 
-
-Industry Practices
-Clean, modularised code
-Snake case as per PEP 8
-Config is Seperate
-Proper Documentation
-DRY - Don’t Repeat yourself
